@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="Student"
+            type="com.zwe.databindingdemo.Student"/>
+        <variable
+            name="Presenter"
+            type="com.zwe.databindingdemo.MainActivity.Presenter"/>
+    </data>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zwe.databindingdemo.MainActivity">
+
+    <ViewStub
+        android:id="@+id/view_stub"
+        android:layout="@layout/viewstub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/first_name"
+        android:onTextChanged="@{Presenter.onTextChanged}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:onClick="@{Presenter.onClick}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="@{Student.isGone.get()?View.GONE:View.VISIBLE}"
+        android:text="@{Student.firstName}"/>
+    <TextView
+        android:onClick="@{()->Presenter.onClickListenerBinding(Student)}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{Student.lastName}"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text='@{Student.mMap["hello"]}'/>
+    <!--bind:user="@{user}"-->
+    <include layout="@layout/include_sample" bind:Student="@{Student}"/>
+</LinearLayout>
+</layout>

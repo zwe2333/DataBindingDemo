@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="start"
+            type="com.zwe.databindingdemo.AllActivity.Start"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:onClick='@{()->start.goToMain()}'
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="main"/>
+        <Button
+            android:onClick='@{()->start.goToList()}'
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="list"/>
+        <Button
+            android:onClick='@{()->start.goToExpression()}'
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="express"/>
+        <Button
+            android:onClick='@{()->start.goToLogin()}'
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="login"/>
+    </LinearLayout>
+</layout>
